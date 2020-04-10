@@ -1,15 +1,14 @@
-// A test location for a ship while we check the code is working.
-const location1 = randomLoc;
-const location2 = location1 + 1;
-const location3 = location2 + 1;
+let randomLoc = Math.floor(Math.random() * 5);
 
-const randomLoc = Math.floor(Math.random() * 5);
+let location1 = randomLoc;
+let location2 = location1 + 1;
+let location3 = location2 + 1;
 
-const guess;
-const hits = 0;
-const guesses = 0;
+let guess = undefined;
+let hits = 0;
+let guesses = 0;
 
-const isSunk = false;
+let isSunk = false;
 
 // A Boolean that is set to true once a ship has been sunk.
 // Guesses are added to, even if the guess is incorrect, meaning 'a miss'.
@@ -35,7 +34,7 @@ while (isSunk === false) {
   }
 }
 
-const stats =
+let stats =
   "You took " +
   guesses +
   " guesses to sink all my battleships. " +
