@@ -1,6 +1,6 @@
 # Battleships in JavaScript
 
-![Battleship in Javascript parody boardgame cover](img/js_battleship_cover.webp)
+![Battleship in Javascript parody boardgame cover](img/js_battleship_cover.jpg)
 
 Back in the early 1990s, every so often my brother and I would open up something about the size of a briefcase, load in the eight or so AA batteries it needed and played <a href="https://www.youtube.com/watch?v=CZ2Qj4VrqIw"> Electronic Battleship </a>.
 
@@ -46,7 +46,7 @@ If that guess is invalid, tell the user to enter a valid guess (so we’ll need 
 If the guess is valid, then add one to the number of guesses made by the user, which will make up the score.
 
 
-![Battleship in Javascript parody boardgame cover](img/js_battleship_design.webp)
+![Battleship in Javascript parody boardgame cover](img/js_battleship_design.jpg)
 
 Provided the guess is valid, we then need to enter another conditional statement. If the user’s guess matches a ship location, add one to the number of  hits 
 
