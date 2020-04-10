@@ -26,3 +26,11 @@ if (guess == location1 || guess == location2 || guess == location3 )
     alert("Hit!")
     hits = hits + 1; 
  }
+
+ if (hits === 3) {
+     isSunk = true;
+     alert("You sank my cruiser!")
+ }   
+
+
+ 
