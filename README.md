@@ -1,8 +1,12 @@
-# Battleships in JavaScript
+# JavaScript Battleship!
 
 ![Battleship in Javascript parody boardgame cover](img/js_battleship_cover.jpg)
 
 Back in the early 1990s, every so often my brother and I would open up something about the size of a briefcase, load in the eight or so AA batteries it needed and played <a href="https://www.youtube.com/watch?v=CZ2Qj4VrqIw"> Electronic Battleship </a>.
+
+## Installation instructions
+
+Just download the repo and open battleship.html and play!
 
 
 I built this JavaScript version both out of nostalgia and 
