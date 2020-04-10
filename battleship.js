@@ -18,19 +18,26 @@ while (isSunk === false) {
     alert("Oh my, please try again and enter a number between 1 and 6!");
   } else {
     guesses = guesses + 1;
+
+    if (guess == location1 || guess == location2 || guess == location3) {
+      alert("Hit!");
+      hits = hits + 1;
+
+      if (hits === 3) {
+        isSunk = true;
+        alert("You sank my cruiser!");
+      }
+    } else { 
+        alert("Miss!")
+    } 
   }
 }
 
-if (guess == location1 || guess == location2 || guess == location3 )
- { 
-    alert("Hit!")
-    hits = hits + 1; 
- }
+var stats =
+  "You took " +
+  guesses +
+  " guesses to sink a cruiser, " +
+  "which means your shooting accuracy was " +
+  3 / guesses * 100 + "%";
 
- if (hits === 3) {
-     isSunk = true;
-     alert("You sank my cruiser!")
- }   
-
-
- 
+alert(stats);
