@@ -1,4 +1,4 @@
-# JavaScript Battleship 1.0
+# JavaScript Battleship
 
 ![Battleship in Javascript parody boardgame cover](img/js_battleship_cover.jpg)
 
@@ -11,6 +11,17 @@ Just download the repo and open battleship.html and play!
 
 I built this JavaScript version both out of nostalgia and 
 to practice programming using JavaScript. 
+
+# Version 2.0 
+
+## Design
+
+In this version I am moving the game from a basic dialogue box (alert) prompt for users to enter their guesses into an MVC / Model View Controller version.  
+
+
+
+
+# Version 1.0 
 
 ## Design
 
