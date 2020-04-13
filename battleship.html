@@ -10,6 +10,7 @@
     <body>
       <main>
         <div class="board" id="board">
+          <div class="messageArea" id="messageArea"></div>
           <table>
             <tr>
               <td id="00"></td>
@@ -75,6 +76,10 @@
               <td id="66"></td>
             </tr>
           </table>
+          <form>
+            <input type="text" id="guessInput" placeholder="A0"> 
+            <input type="button" id="fireButton" value="Fire!">
+          </form>
         </div>
         <h1>Play Battleship!</h1>
         <script src="./js/battleship.js"></script>
