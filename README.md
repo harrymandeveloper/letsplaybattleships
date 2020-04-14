@@ -6,8 +6,6 @@ Back in the early 1990s, every so often my brother and I would open up something
 
 ## Installation instructions
 
-Currently in Development... 
-
 Just download the repo and open battleship.html and play!
 
 ## About
