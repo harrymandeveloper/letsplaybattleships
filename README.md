@@ -18,6 +18,13 @@ to practice programming using JavaScript.
 
 In this version I am moving the game from a basic dialogue box (alert) prompt for users to enter their guesses into an MVC / Model View Controller version.  
 
+The view displays ships on a newly designed grid system.
+
+The grid translates positions A B C D E F G into numbers 0 1 2 3 4 5 6
+
+So A0 is 00, C2 is 22, D5 is 35, etc, etc.
+
+As the user makes a guess, in the JS we getElementById and then change the relevant class name to update to 'hit' or 'miss' to then, via the CSS, to display either a ship for a 'hit' or the word 'miss' for a miss.
 
 
 

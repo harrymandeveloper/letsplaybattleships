@@ -8,6 +8,7 @@ body {
   height: 863px;
   margin: auto;
   background: url("../img/board.jpg") no-repeat;
+  /* background: url("../img/js_retrobattleship_board.jpg") no-repeat; */
 }
 
 .hit {
