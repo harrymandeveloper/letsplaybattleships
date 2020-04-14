@@ -18,13 +18,28 @@ let view = {
 };
 
 
-view.displayMiss("00"); 
-view.displayHit("34"); 
-view.displayMiss("55"); 
-view.displayHit("12"); 
-view.displayMiss("25"); 
-view.displayHit("26");
+// view.displayMiss("00"); 
+// view.displayHit("34"); 
+// view.displayMiss("55"); 
+// view.displayHit("12"); 
+// view.displayMiss("25"); 
+// view.displayHit("26");
 
-view.displayMessage("This is a test of the hit or miss alert system");
+// view.displayMessage("This is a test of the hit or miss alert system");
 
 
+let ships = [
+  {
+    locations: ["10", "20", "30"],
+    hits: ["", "", ""]
+  },
+  {
+    locations: ["32", "33", "34"],
+    hits: ["", "", ""]
+  },
+  {
+    locations: ["63", "64", "65"],
+    hits: ["", "", "hit"]
+  }
+
+]

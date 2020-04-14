@@ -26,7 +26,7 @@ So A0 is 00, C2 is 22, D5 is 35, etc, etc.
 
 As the user makes a guess, in the JS we getElementById and then change the relevant class name to update to 'hit' or 'miss' to then, via the CSS, to display either a ship for a 'hit' or the word 'miss' for a miss.
 
-
+You can use the Ship Locations Tool in the excel folder to translate array values into ship positions and vice versa.
 
 # Version 1.0 
 
