@@ -23,23 +23,12 @@ let model = {
   shipLength: 3,
   shipsSunk: 0,
 
-  ships: [
-    {
-      // Equivalent to A6, B6 and C6
-      locations: ["06", "16", "26"],
-      hits: ["", "", ""],
-    },
-    {
-      // Equivalent to D2, D3 and D4
-      locations: ["32", "33", "34"],
-      hits: ["", "", ""],
-    },
-    {
-      // Equivalent to G3, G4 and G5
-      locations: ["63", "64", "65"],
-      hits: ["", "", ""],
-    },
+  ships: [ 
+    { locations: [0, 0, 0], hits: ["", "", ""] },
+    { locations: [0, 0, 0], hits: ["", "", ""] },
+    { locations: [0, 0, 0], hits: ["", "", ""] } 
   ],
+    
 
   fire: function (guess) {
     for (let i = 0; i < this.numShips; i += 1) {
@@ -102,6 +91,18 @@ let model = {
     return newShipLocations;
   },
 
+  collision: function (locations) {
+    for (let i = 0; i < this.numShips; i+=1) {
+      let ship = this.ships[i];
+      for (let j = 0; j < locations.length; j+=1) {
+        if (ship.locations.indexOf(locations[j]) >= 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  },
+
   generateShipLocations: function () {
     let locations;
     for (let i = 0; i < this.numShips; i++) {
@@ -133,7 +134,7 @@ let controller = {
       let hit = model.fire(location);
       if (hit && model.shipsSunk === model.numShips) {
         view.displayMessage(
-          "You sank all my battleships, in " +
+          "You sank all of my battleships, in " +
             this.guesses +
             " guesses. Your shots were " +
             Math.floor(((model.numShips * model.shipLength) / this.guesses)  * 100) +
@@ -189,6 +190,7 @@ function init() {
   fireButton.onclick = handleFireButton;
   let guessInput = document.getElementById("guessInput");
   guessInput.onkeypress = handleKeyPress;
+  model.generateShipLocations();
 }
 
 function handleKeyPress(e) {
