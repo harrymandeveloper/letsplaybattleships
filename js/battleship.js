@@ -131,7 +131,10 @@ window.onload = init;
 
 function handleFireButton() {
   let guessInput = document.getElementById("guessInput"); 
-  let guess = guessInput.value; controller.processGuess(guess);
+  let guess = guessInput.value.toUpperCase(); 
+  controller.processGuess(guess);
+
+  // Reset to empty when a value is entered
   guessInput.value = "";
 }
 
