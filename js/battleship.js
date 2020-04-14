@@ -76,15 +76,45 @@ let model = {
 // model.fire("53");
 // model.fire("06");
 
-
 let controller = {
   guesses: 0,
 
-  processGuess: function(guess) {
+  processGuess: function (guess) {
+    let location = parseGuess(guess);
+    if (location) {
+      this.guesses+=1;
+      let hit = model.fire(location);
+      if (hit && model.shipsSunk === model.numShips) {
+        view.displayMessage(
+          "You sank all my battleships, in " + this.guesses + " guesses. Your shots were " + ((this.guesses / model.numShips) * 100) + "% accurate" 
+        );
+      }
+    }
+  },
+};
 
-    //data to return to go in here
+function parseGuess(guess) {
+    let alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+    if (guess === null || guess.length !== 2) {
+      alert(
+        "Please try again and enter a letter followed by number on the board."
+      );
+    } else {
+      let firstChar = guess.charAt(0);
+      let row = alphabet.indexOf(firstChar);
+      let column = guess.charAt(1);
+      if (isNaN(row) || isNaN(column)) {
+        alert("Sorry, that space isn't on the board.");
+      } else if (
+        row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize
+      ) {
+        alert("Sorry, that's not on the board!");
+      } else {
+        return row + column; 
+      }
+    }
   }
 
-
-
-}
+  controller.processGuess("A0");
+  controller.processGuess("A6");
+  controller.processGuess("B6");

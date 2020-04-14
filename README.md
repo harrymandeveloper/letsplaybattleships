@@ -55,11 +55,11 @@ For this we need views to display a hit miss or sink, a model for the position a
 
 Spaces look like this:
 
-01, 02, 03, 04, 05, 06
-10, 11, 12, 13, 14, 15, 16
-...
-50, 51, 52, 53, 54, 55, 56
-60, 61, 62, 63, 64, 65, 66
+01, 02, 03, 04, 05, 06 <br />
+10, 11, 12, 13, 14, 15, 16 <br />
+...<br />
+50, 51, 52, 53, 54, 55, 56 <br />
+60, 61, 62, 63, 64, 65, 66<br />
 
 
 The controller needs to validate and split the user's entry apart and translate these numbers before re-concatenating the string back together again to produce a result.
