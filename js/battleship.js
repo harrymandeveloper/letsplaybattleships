@@ -16,6 +16,8 @@ let view = {
 };
 
 let model = {
+  // Board size here is 7 x 7.
+  // Recommended number ships is 3.
   boardSize: 7,
   numShips: 3,
   shipLength: 3,
@@ -48,7 +50,7 @@ let model = {
       if (index >= 0) {
         ships.hits[index] = "hit";
         view.displayHit(guess);
-        view.displayMessage("HIT!");
+        view.displayMessage("Hit!");
 
         if (this.isSunk(ships)) {
           view.displayMessage("You sank one of my cruisers!");
@@ -82,11 +84,15 @@ let controller = {
   processGuess: function (guess) {
     let location = parseGuess(guess);
     if (location) {
-      this.guesses+=1;
+      this.guesses += 1;
       let hit = model.fire(location);
       if (hit && model.shipsSunk === model.numShips) {
         view.displayMessage(
-          "You sank all my battleships, in " + this.guesses + " guesses. Your shots were " + ((this.guesses / model.numShips) * 100) + "% accurate" 
+          "You sank all my battleships, in " +
+            this.guesses +
+            " guesses. Your shots were " +
+            Math.floor(((model.numShips * model.shipLength) / this.guesses)  * 100) +
+            "% accurate"
         );
       }
     }
@@ -94,27 +100,53 @@ let controller = {
 };
 
 function parseGuess(guess) {
-    let alphabet = ["A", "B", "C", "D", "E", "F", "G"];
-    if (guess === null || guess.length !== 2) {
+  let alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+  if (guess === null || guess.length !== 2) {
+    alert(
+      "Please try again and enter a letter followed by number on the board."
+    );
+  } else {
+    // Converts the guess into a number
+    let firstChar = guess.charAt(0);
+    let row = alphabet.indexOf(firstChar);
+    let column = guess.charAt(1);
+    if (isNaN(row) || isNaN(column)) {
+      alert("Sorry, that space isn't on the board.");
+    } else if (
+      row < 0 ||
+      row >= model.boardSize ||
+      column < 0 ||
+      column >= model.boardSize
+    ) {
       alert(
-        "Please try again and enter a letter followed by number on the board."
+        "Sorry, try typing another entry without sneezing this time – your guess was off the board and off the chart!"
       );
     } else {
-      let firstChar = guess.charAt(0);
-      let row = alphabet.indexOf(firstChar);
-      let column = guess.charAt(1);
-      if (isNaN(row) || isNaN(column)) {
-        alert("Sorry, that space isn't on the board.");
-      } else if (
-        row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize
-      ) {
-        alert("Sorry, that's not on the board!");
-      } else {
-        return row + column; 
-      }
+      return row + column;
     }
   }
+}
 
-  controller.processGuess("A0");
-  controller.processGuess("A6");
-  controller.processGuess("B6");
+window.onload = init;
+
+function handleFireButton() {
+  let guessInput = document.getElementById("guessInput"); 
+  let guess = guessInput.value; controller.processGuess(guess);
+  guessInput.value = "";
+}
+
+
+function init() {
+  let fireButton = document.getElementById("fireButton");
+  fireButton.onclick = handleFireButton;
+  var guessInput = document.getElementById("guessInput");
+  guessInput.onkeypress = handleKeyPress;
+}
+
+function handleKeyPress(e) {
+  let fireButton = document.getElementById("fireButton");
+  if (e.keyCode === 13) {
+    fireButton.click();
+    return false;
+  }
+}
