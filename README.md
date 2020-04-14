@@ -6,11 +6,18 @@ Back in the early 1990s, every so often my brother and I would open up something
 
 ## Installation instructions
 
+Currently in Development... 
+
 Just download the repo and open battleship.html and play!
 
+## About
 
 I built this JavaScript version both out of nostalgia and 
 to practice programming using JavaScript. 
+
+There are two versions, one with a simple alert dialogue box for guesses and a second version with a 7 x 7 grid.
+
+
 
 # Version 2.0 
 
@@ -28,6 +35,39 @@ As the user makes a guess, in the JS we getElementById and then change the relev
 
 You can use the Ship Locations Tool in the excel folder to translate array values into ship positions and vice versa.
 
+
+In the original game of Battleship, or the version that we owned as kids, SeaBattle, there is a 10 by 10 grid, offering players a grid of 100 spaces in which to place their ships. 
+
+Carrier: 5 spaces
+Battleship: 4 spaces 
+Cruiser: 3 spaces
+Submarine: 3 spaces
+Destroyer: 2 spaces  
+
+Each player therefore occupied 17 spaces.
+
+Our grid is about half the size (7 x 7), meaning we want around half the number of spaces occupied.
+
+So each player in our game occupies 9 spaces on the grid. 
+
+
+For this we need views to display a hit miss or sink, a model for the position and size of ships and the grid and a controller that handles the user's guesses and to translate these guesses from a string of a letter and an integer (e.g. A5) into a straightforward number (e.g. 05), representing a space numbered 0 - 66 on the grid.
+
+Spaces look like this:
+
+01, 02, 03, 04, 05, 06
+10, 11, 12, 13, 14, 15, 16
+...
+50, 51, 52, 53, 54, 55, 56
+60, 61, 62, 63, 64, 65, 66
+
+
+The controller needs to validate and split the user's entry apart and translate these numbers before re-concatenating the string back together again to produce a result.
+
+
+![Battleship Version 2 Controller Design](img/js_battleship_controller_design.jpg)
+
+
 # Version 1.0 
 
 ## Design
@@ -40,6 +80,7 @@ In order for the game to work we need a few variables in place first:
 ### guess
 
 The variable that contains the user’s current guess, undefined until a user enters two numbers – an array of two integers.
+
 
 ### guesses  
 
@@ -70,9 +111,9 @@ If the guess is valid, then add one to the number of guesses made by the user, w
 
 ![Diagram illustrating the design of JavaScript Battleship](img/js_battleship_design.jpg)
 
-Provided the guess is valid, we then need to enter another conditional statement. If the user’s guess matches a ship location, add one to the number of  hits 
+Provided the guess is valid, we then need to enter another conditional statement. If the user’s guess matches a ship location, add one to the number of hits 
 
-* If this number of hits is more than the length of the ship on the grid ( locations ), e.g. 3 for a cruiser, then set the isSunk boolean to true and display “You sank my battleship!”
+* If this number of hits is more than the length of the ship on the grid ( locations ), e.g. 3 for a cruiser, then set the isSunk boolean to true and display “You sank my cruiser!”
 
 Otherwise (‘else’) mark this guess as a ‘miss’.
 

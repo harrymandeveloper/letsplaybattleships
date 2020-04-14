@@ -15,15 +15,6 @@ let view = {
   },
 };
 
-// view.displayMiss("00");
-// view.displayHit("34");
-// view.displayMiss("55");
-// view.displayHit("12");
-// view.displayMiss("25");
-// view.displayHit("26");
-
-// view.displayMessage("This is a test of the hit or miss alert system");
-
 let model = {
   boardSize: 7,
   numShips: 3,
@@ -49,27 +40,25 @@ let model = {
   ],
 
   fire: function (guess) {
-    for (let i = 0; i < this.numShips; i+=1) {
+    for (let i = 0; i < this.numShips; i += 1) {
       let ships = this.ships[i];
       let index = ships.locations.indexOf(guess);
       // So if the indexOf here returns -1 then there are no matches.
-      
+
       if (index >= 0) {
         ships.hits[index] = "hit";
-        view.displayHit(guess); 
+        view.displayHit(guess);
         view.displayMessage("HIT!");
 
         if (this.isSunk(ships)) {
           view.displayMessage("You sank one of my cruisers!");
-          this.shipsSunk+=1;
+          this.shipsSunk += 1;
         }
         return true;
-
       }
-
     }
-    view.displayMiss(guess); 
-    view.displayMessage("You missed.");  
+    view.displayMiss(guess);
+    view.displayMessage("You missed.");
     return false;
   },
 
@@ -83,14 +72,19 @@ let model = {
   },
 };
 
+// Test guesses
+// model.fire("53");
+// model.fire("06");
 
-model.fire("53");
-model.fire("06");
-model.fire("16");
-model.fire("26");
-model.fire("34");
-model.fire("24");
-model.fire("44");
-model.fire("12");
-model.fire("11");
-model.fire("10");
+
+let controller = {
+  guesses: 0,
+
+  processGuess: function(guess) {
+
+    //data to return to go in here
+  }
+
+
+
+}
