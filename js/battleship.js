@@ -51,15 +51,15 @@ let model = {
   fire: function (guess) {
     for (let i = 0; i < this.numShips; i+=1) {
       let ships = this.ships[i];
-      let index = ship.locations.indexOf(guess);
+      let index = ships.locations.indexOf(guess);
       // So if the indexOf here returns -1 then there are no matches.
       
       if (index >= 0) {
-        ship.hits[index] = "hit";
+        ships.hits[index] = "hit";
         view.displayHit(guess); 
         view.displayMessage("HIT!");
 
-        if (this.isSunk(ship)) {
+        if (this.isSunk(ships)) {
           view.displayMessage("You sank one of my cruisers!");
           this.shipsSunk+=1;
         }
@@ -82,3 +82,15 @@ let model = {
     return true;
   },
 };
+
+
+model.fire("53");
+model.fire("06");
+model.fire("16");
+model.fire("26");
+model.fire("34");
+model.fire("24");
+model.fire("44");
+model.fire("12");
+model.fire("11");
+model.fire("10");
