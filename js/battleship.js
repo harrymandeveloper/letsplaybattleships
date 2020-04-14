@@ -43,16 +43,18 @@ let model = {
 
   fire: function (guess) {
     for (let i = 0; i < this.numShips; i += 1) {
-      let ships = this.ships[i];
-      let index = ships.locations.indexOf(guess);
+      let ship = this.ships[i];
+      let index = ship.locations.indexOf(guess);
       // So if the indexOf here returns -1 then there are no matches.
-
-      if (index >= 0) {
-        ships.hits[index] = "hit";
+      if (ship.hits[index] === "hit") {
+        view.displayMessage("Oops, you already hit that location!");
+        return true;
+      } else if (index >= 0) {
+        ship.hits[index] = "hit";
         view.displayHit(guess);
         view.displayMessage("Hit!");
 
-        if (this.isSunk(ships)) {
+        if (this.isSunk(ship)) {
           view.displayMessage("You sank one of my cruisers!");
           this.shipsSunk += 1;
         }
@@ -72,6 +74,49 @@ let model = {
     }
     return true;
   },
+
+  generateShip: function() {
+
+    let direction = Math.floor(Math.random() * 2);
+    let row, col;
+    if (direction === 1) {
+      // x axis - Remember starting column has to be big enough to accommodate horizontal ships
+      // so we use a number that takes the size of the board and subtracts the ship length
+      // before being multiplied, to give us a random number between 1 and the length of the ship plus one.
+      row = Math.floor(Math.random() * this.boardSize);
+      col = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
+    } else {
+      // y axis - As above, remember to make it large enough for ships placed vertically.
+      row = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
+      col = Math.floor(Math.random() * this.boardSize);
+    }
+
+    let newShipLocations = [];
+    for (let i = 0; i < this.shipLength; i += 1) {
+      if (direction === 1) {
+        newShipLocations.push(row + "" + (col + i));
+      } else {
+        newShipLocations.push((row + i) + "" + col);
+      }
+    }
+    return newShipLocations;
+  },
+
+  generateShipLocations: function () {
+    let locations;
+    for (let i = 0; i < this.numShips; i++) {
+      do {
+        locations = this.generateShip();
+      } while (this.collision(locations));
+      this.ships[i].locations = locations;
+    }
+    console.log("Ships array: ");
+    console.log(this.ships);
+  },
+
+
+
+
 };
 
 // Test guesses
@@ -142,7 +187,7 @@ function handleFireButton() {
 function init() {
   let fireButton = document.getElementById("fireButton");
   fireButton.onclick = handleFireButton;
-  var guessInput = document.getElementById("guessInput");
+  let guessInput = document.getElementById("guessInput");
   guessInput.onkeypress = handleKeyPress;
 }
 
@@ -153,3 +198,4 @@ function handleKeyPress(e) {
     return false;
   }
 }
+
