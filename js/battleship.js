@@ -134,11 +134,11 @@ let controller = {
       let hit = model.fire(location);
       if (hit && model.shipsSunk === model.numShips) {
         view.displayMessage(
-          "You sank all of your opponent's battleships in " +
+          "You sank every battleship in " +
             this.guesses +
-            " guesses. Your shots were " +
+            " guesses." + "<br />" + "Your shots were " +
             Math.floor(((model.numShips * model.shipLength) / this.guesses)  * 100) +
-            "% accurate"
+            "% accurate."
         );
       }
     }
