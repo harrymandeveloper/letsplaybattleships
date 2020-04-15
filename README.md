@@ -15,6 +15,7 @@ to practice programming using JavaScript.
 
 There are two versions, one with a simple alert dialogue box for guesses and a second version with a 7 x 7 grid.
 
+Based on the battleship game by Eric Freedman in the book HeadFirst:Javascript.
 
 
 # Version 2.0 

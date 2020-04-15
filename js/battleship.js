@@ -44,7 +44,7 @@ let model = {
         view.displayMessage("Hit!");
 
         if (this.isSunk(ship)) {
-          view.displayMessage("You sank one of my cruisers!");
+          view.displayMessage("You sank a cruiser!");
           this.shipsSunk += 1;
         }
         return true;
@@ -134,7 +134,7 @@ let controller = {
       let hit = model.fire(location);
       if (hit && model.shipsSunk === model.numShips) {
         view.displayMessage(
-          "You sank all of my battleships, in " +
+          "You sank all of your opponent's battleships in " +
             this.guesses +
             " guesses. Your shots were " +
             Math.floor(((model.numShips * model.shipLength) / this.guesses)  * 100) +
@@ -182,6 +182,7 @@ function handleFireButton() {
 
   // Reset to empty when a value is entered
   guessInput.value = "";
+  guessInput.focus();
 }
 
 
@@ -191,6 +192,7 @@ function init() {
   let guessInput = document.getElementById("guessInput");
   guessInput.onkeypress = handleKeyPress;
   model.generateShipLocations();
+  guessInput.focus();
 }
 
 function handleKeyPress(e) {
