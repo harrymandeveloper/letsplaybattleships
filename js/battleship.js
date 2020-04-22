@@ -174,6 +174,7 @@ function parseGuess(guess) {
 }
 
 window.onload = init;
+guessInput.focus();
 
 function handleFireButton() {
   let guessInput = document.getElementById("guessInput"); 

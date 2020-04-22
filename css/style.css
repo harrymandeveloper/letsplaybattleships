@@ -30,10 +30,12 @@ body {
 }
 
 .hit {
+  align-content: center;
   background: url("../img/ship.png") no-repeat center center;
 }
 
 .miss {
+    align-content: center;
     background: url("../img/miss.png") no-repeat center center;
 }
 
