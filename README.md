@@ -8,6 +8,9 @@ Back in the early 1990s, every so often my brother and I would open up something
 
 Just download the repo and open index.html and play!
 
+Live deployment over at https://www.bit.ly/JSbattleshipsHM
+
+
 ## About
 
 I built this JavaScript version both out of nostalgia and 
