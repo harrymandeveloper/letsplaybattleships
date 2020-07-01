@@ -6,7 +6,7 @@ Back in the early 1990s, every so often my brother and I would open up something
 
 ## Installation instructions
 
-Just download the repo and open battleship.html and play!
+Just download the repo and open index.html and play!
 
 ## About
 
